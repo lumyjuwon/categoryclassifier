@@ -8,8 +8,8 @@ Created on Thu May 24 11:15:44 2018
 
 import os
 import tensorflow as tf
-import Analysis.Bidirectional_LSTM.Bi_LSTM as Bi_LSTM
-import Analysis.Bidirectional_LSTM.Word2Vec as Word2Vec
+import Bi_LSTM as Bi_LSTM
+import Word2Vec as Word2Vec
 import gensim
 import numpy as np
 import csv
