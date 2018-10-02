@@ -8,8 +8,8 @@
 * Classifier.py 및 CsvWord2Vec.py를 실행하기 전에 여러 파일들의 경로들을 잘 확인하신 후 경로를 재설정 해주시기 바랍니다.
 
 # 결과물
-![ex_screenshot](./img/result1.PNG)
-![ex_screenshot](./img/result2.PNG)
+![ex_screenshot](./img/result1.png)
+![ex_screenshot](./img/result2.png)
 
 # HELP
 * https://github.com/MSWon/Sentimental-Analysis
