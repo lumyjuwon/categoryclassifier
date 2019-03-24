@@ -30,7 +30,7 @@ for i in line:
         temp.append(sentence[k][0] + '/' + sentence[k][1])
     all_temp.append(temp)
     embeddingmodel.append(temp_embedding)
-    category = i[4]
+    category = i[4]  # CSV에서 category Column으로 변경
     category_number_dic = {'IT과학': 0, '경제': 1, '정치': 2, 'e스포츠': 3, '골프': 4, '농구': 5, '배구': 6, '야구': 7, '일반 스포츠': 8, '축구': 9, '사회': 10, '생활문화': 11}
     for key in category_number_dic.keys():
         if category == key:
