@@ -23,30 +23,12 @@ for i in line:
         temp.append(sentence[k][0] + '/' + sentence[k][1])
     all_temp.append(temp)
     embeddingmodel.append(temp_embedding)
-    if i[3] == "IT과학":
-        all_temp.append(0)
-    elif i[3] == "경제":
-        all_temp.append(1)
-    elif i[3] == "정치":
-        all_temp.append(2)
-    elif i[3] == "e스포츠":
-        all_temp.append(3)
-    elif i[3] == "골프":
-        all_temp.append(4)
-    elif i[3] == "농구":
-        all_temp.append(5)
-    elif i[3] == "배구":
-        all_temp.append(6)
-    elif i[3] == "야구":
-        all_temp.append(7)
-    elif i[3] == "일반 스포츠":
-        all_temp.append(8)
-    elif i[3] == "축구":
-        all_temp.append(9)
-    elif i[3] == "사회":
-        all_temp.append(10)
-    elif i[3] == "생활문화":
-        all_temp.append(11)
+    category = i[4]
+    category_number_dic = {'IT과학': 0, '경제': 1, '정치': 2, 'e스포츠': 3, '골프': 4, '농구': 5, '배구': 6, '야구': 7, '일반 스포츠': 8, '축구': 9, '사회': 10, '생활문화': 11}
+    for key in category_number_dic.keys():
+        if category == key:
+            all_temp.append(category_number_dic.get(category))
+            break
     token.append(all_temp)
 print("토큰 처리 완료")
 

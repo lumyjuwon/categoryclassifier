@@ -30,30 +30,12 @@ for i in line:
         temp.append(sentence[k][0] + '/' + sentence[k][1])
     all_temp.append(temp)
     embeddingmodel.append(temp_embedding)
-    if i[1] == "IT과학":
-        all_temp.append(0)
-    elif i[1] == "경제":
-        all_temp.append(1)
-    elif i[1] == "정치":
-        all_temp.append(2)
-    elif i[1] == "e스포츠":
-        all_temp.append(3)
-    elif i[1] == "골프":
-        all_temp.append(4)
-    elif i[1] == "농구":
-        all_temp.append(5)
-    elif i[1] == "배구":
-        all_temp.append(6)
-    elif i[1] == "야구":
-        all_temp.append(7)
-    elif i[1] == "일반 스포츠":
-        all_temp.append(8)
-    elif i[1] == "축구":
-        all_temp.append(9)
-    elif i[1] == "사회":
-        all_temp.append(10)
-    elif i[1] == "생활문화":
-        all_temp.append(11)
+    category = i[4]
+    category_number_dic = {'IT과학': 0, '경제': 1, '정치': 2, 'e스포츠': 3, '골프': 4, '농구': 5, '배구': 6, '야구': 7, '일반 스포츠': 8, '축구': 9, '사회': 10, '생활문화': 11}
+    for key in category_number_dic.keys():
+        if category == key:
+            all_temp.append(category_number_dic.get(category))
+            break
     token.append(all_temp)
 print("토큰 처리 완료")
 
@@ -63,8 +45,8 @@ print("train_data 최신 버전인지 확인")
 train_X = tokens[:, 0]
 train_Y = tokens[:, 1]
 
-train_Y_ = W2V.One_hot(train_Y)  ## Convert to One-hot
-train_X_ = W2V.Convert2Vec("Data\\post.embedding",train_X)  ## import word2vec model where you have trained before
+train_Y_ = W2V.One_hot(train_Y)  # Convert to One-hot
+train_X_ = W2V.Convert2Vec("Data\\post.embedding",train_X)  # import word2vec model where you have trained before
 
 Batch_size = 32
 Total_size = len(train_X)

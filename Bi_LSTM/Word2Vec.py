@@ -30,7 +30,7 @@ class Word2Vec():
         model = gensim.models.word2vec.Word2Vec.load(model_name)
         return model
     
-    def Convert2Vec(self, model_name, doc):  ## Convert corpus into vectors
+    def Convert2Vec(self, model_name, doc): # Convert corpus into vectors
         #train_X_ = W2V.Convert2Vec("Word2Vec_csv_article.embedding",train_X)
         word_vec = []
         model = gensim.models.word2vec.Word2Vec.load(model_name)
@@ -38,9 +38,9 @@ class Word2Vec():
             sub = []
             for word in sent:
                 if word in model.wv.vocab:
-                    sub.append(model.wv[word]) ## Word Vector Input
+                    sub.append(model.wv[word]) # Word Vector Input
                 else:
-                    sub.append(np.random.uniform(-0.25,0.25,300)) ## used for OOV words
+                    sub.append(np.random.uniform(-0.25,0.25,300)) # used for OOV words
             word_vec.append(sub)
         
         return word_vec
@@ -65,6 +65,3 @@ class Word2Vec():
             result.append(one_hot)
         
         return result
-    
-    
-    

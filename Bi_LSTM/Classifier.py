@@ -23,7 +23,7 @@ def Convert2Vec(model_name, sentence):
         if (word in model.wv.vocab):
             sub.append(model.wv[word])
         else:
-            sub.append(np.random.uniform(-0.25, 0.25, 300))  ## used for OOV words
+            sub.append(np.random.uniform(-0.25, 0.25, 300))  # used for OOV words
     word_vec.append(sub)
     return word_vec
 
@@ -33,7 +33,7 @@ def Grade(sentence):
     embedding = Convert2Vec('Data\\post.embedding', tokens)
     zero_pad = W2V.Zero_padding(embedding, Batch_size, Maxseq_length, Vector_size)
     global sess
-    result = sess.run(prediction, feed_dict={X: zero_pad, seq_len: [len(tokens)]})  ## tf.argmax(prediction, 1)이 여러 prediction 값중 max 값 1개만 가져옴
+    result = sess.run(prediction, feed_dict={X: zero_pad, seq_len: [len(tokens)]}) # tf.argmax(prediction, 1)이 여러 prediction 값중 max 값 1개만 가져옴
     point = result.ravel().tolist()
     Tag = ["IT과학", "경제", "정치", "e스포츠", "골프", "농구", "배구", "야구", "일반 스포츠", "축구", "사회", "생활문화"]
     for t, i in zip(Tag, point):
@@ -47,7 +47,7 @@ W2V = Word2Vec.Word2Vec()
 
 Batch_size = 1
 Vector_size = 300
-Maxseq_length = 500   ## Max length of training data
+Maxseq_length = 500  # Max length of training data
 learning_rate = 0.001
 lstm_units = 128
 num_class = 12
@@ -63,7 +63,7 @@ with tf.variable_scope("loss", reuse = tf.AUTO_REUSE):
     logits = BiLSTM.logits(X, BiLSTM.W, BiLSTM.b, seq_len)
     loss, optimizer = BiLSTM.model_build(logits, Y, learning_rate)
 
-prediction = tf.nn.softmax(logits) ## softmax
+prediction = tf.nn.softmax(logits)  # softmax
 
 saver = tf.train.Saver()
 init = tf.global_variables_initializer()
