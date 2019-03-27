@@ -21,6 +21,7 @@ token = []
 embeddingmodel = []
 
 for i in line:
+    content = i[3]  # csv에서 뉴스 제목 또는 뉴스 본문 column으로 변경
     sentence = twitter.pos(i[0], norm=True, stem=True)
     temp = []
     temp_embedding = []
@@ -30,12 +31,9 @@ for i in line:
         temp.append(sentence[k][0] + '/' + sentence[k][1])
     all_temp.append(temp)
     embeddingmodel.append(temp_embedding)
-    category = i[4]  # CSV에서 category Column으로 변경
+    category = i[1]  # csv에서 category column으로 변경
     category_number_dic = {'IT과학': 0, '경제': 1, '정치': 2, 'e스포츠': 3, '골프': 4, '농구': 5, '배구': 6, '야구': 7, '일반 스포츠': 8, '축구': 9, '사회': 10, '생활문화': 11}
-    for key in category_number_dic.keys():
-        if category == key:
-            all_temp.append(category_number_dic.get(category))
-            break
+    all_temp.append(category_number_dic.get(category))
     token.append(all_temp)
 print("토큰 처리 완료")
 
